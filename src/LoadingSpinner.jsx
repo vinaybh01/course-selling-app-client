@@ -1,10 +1,17 @@
 import React from "react";
 import "./spinner.css";
 
-export default function LoadingSpinner() {
+function LoadingSpinner() {
   return (
-    <div className="spinner-container">
-      <div className="loading-spinner"></div>
+    <div>
+      <div
+        className="spinner-container"
+        style={{ display: "flex", justifyContent: "center",padding:"30px" }}
+      >
+        <div className="loading-spinner"></div>
+      </div>
     </div>
   );
 }
+
+export default LoadingSpinner;

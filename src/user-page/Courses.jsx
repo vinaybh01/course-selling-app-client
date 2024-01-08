@@ -3,6 +3,7 @@ import { Button, Card, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadingSpinner from "../LoadingSpinner";
 
 function Courses() {
   const [courses, setCourses] = useState([]);
@@ -28,17 +29,27 @@ function Courses() {
   }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        margin: "30px 100px",
-      }}
-    >
-      {courses &&
-        courses.length > 0 &&
-        courses.map((course) => <Course course={course} />)}
+    <div>
+      {courses.length > 0 ? (
+        <div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              margin: "30px 100px",
+            }}
+          >
+            {courses &&
+              courses.length > 0 &&
+              courses.map((course) => <Course course={course} />)}
+          </div>
+        </div>
+      ) : (
+        <div>
+          <LoadingSpinner />
+        </div>
+      )}
     </div>
   );
 }

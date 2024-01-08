@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Button, Card, Typography } from "@mui/material";
 import Photo from "../assets/pic2.png";
+import LoadingSpinner from "../LoadingSpinner";
 
 function CoursePurchase() {
   let { courseId } = useParams();
@@ -135,7 +136,9 @@ function CoursePurchase() {
           </div>
         </div>
       ) : (
-        <div>Loading...</div>
+        <div>
+          <LoadingSpinner />
+        </div>
       )}
     </div>
   );

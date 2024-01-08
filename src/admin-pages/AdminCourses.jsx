@@ -3,6 +3,7 @@ import { Button, Card, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadingSpinner from "../LoadingSpinner";
 
 function AdminCourses() {
   const [courses, setCourses] = useState([]);
@@ -23,17 +24,25 @@ function AdminCourses() {
   }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        margin: "30px 100px",
-      }}
-    >
-      {courses.map((course) => {
-        return <Course course={course} />;
-      })}
+    <div>
+      {courses.length > 0 ? (
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            margin: "30px 100px",
+          }}
+        >
+          {courses.map((course) => {
+            return <Course course={course} />;
+          })}
+        </div>
+      ) : (
+        <div>
+          <LoadingSpinner />
+        </div>
+      )}
     </div>
   );
 }
@@ -62,7 +71,12 @@ export function Course({ course }) {
 
       <Typography
         textAlign={"left"}
-        style={{ marginLeft: "10px", padding: "3px", fontSize:"18px" , fontWeight:"500" }}
+        style={{
+          marginLeft: "10px",
+          padding: "3px",
+          fontSize: "18px",
+          fontWeight: "500",
+        }}
       >
         {course.title}
       </Typography>

@@ -26,17 +26,39 @@ function PurchasedCourse() {
   }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        margin: "30px 100px",
-      }}
-    >
-      {purchasedCourse &&
-        purchasedCourse.length > 0 &&
-        purchasedCourse.map((course) => <Course course={course} />)}
+    <div>
+      {purchasedCourse.length === 0 ? (
+        <div>
+          <Typography
+            textAlign={"center"}
+            style={{
+              marginLeft: "10px",
+              padding: "20px",
+              fontSize: "24px",
+              fontWeight: "500",
+            }}
+          >
+            No Purchased Course
+          </Typography>
+        </div>
+      ) : purchasedCourse.length > 0 ? (
+        <div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              margin: "30px 100px",
+            }}
+          >
+            {purchasedCourse.map((course) => (
+              <Course key={course.id} course={course} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div>loading</div>
+      )}
     </div>
   );
 }
