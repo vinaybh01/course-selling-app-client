@@ -1,0 +1,22 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.signup {
+  border: 2px solid black;
+  width: 400px;
+  height: 300px;
+  margin-top: 150px;
+}
+
+.inputt {
+  margin: 15px;
+}
+
+.hover:hover {
+  color: blue;
+  text-decoration: underline;
+}
