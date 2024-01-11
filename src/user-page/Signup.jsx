@@ -29,7 +29,7 @@ function Signup() {
       console.log("ss", validatedData);
 
       await axios.post(
-        "http://localhost:3000/users/signup",
+        "https://course-app-api.onrender.com/users/signup",
 
         {
           username: validatedData.username,

@@ -15,7 +15,7 @@ function AdminCourses() {
     function callback1(res) {
       res.json().then(callback2);
     }
-    fetch("http://localhost:3000/admin/courses/", {
+    fetch("https://course-app-api.onrender.com/admin/courses/", {
       method: "GET",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("tokenAdmin"),
@@ -113,7 +113,7 @@ export function Course({ course }) {
           onClick={async () => {
             try {
               const response = await axios.delete(
-                `http://localhost:3000/admin/course/${course._id}`,
+                `https://course-app-api.onrender.com/admin/course/${course._id}`,
                 {
                   headers: {
                     Authorization:

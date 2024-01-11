@@ -14,7 +14,7 @@ function Update() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/admin/course/${courseId}`, {
+      .get(`https://course-app-api.onrender.com/admin/course/${courseId}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("tokenAdmin"),
         },
@@ -34,7 +34,7 @@ function Update() {
     try {
       await axios
         .put(
-          `http://localhost:3000/admin/course/${courseId}`,
+          `https://course-app-api.onrender.com/admin/course/${courseId}`,
           {
             title,
             description: des,

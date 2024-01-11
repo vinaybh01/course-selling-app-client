@@ -8,7 +8,7 @@ function PurchasedCourse() {
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:3000/users/purchasedCourses", {
+        .get("https://course-app-api.onrender.com/users/purchasedCourses", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("tokenUser"),
           },

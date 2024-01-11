@@ -12,7 +12,7 @@ function Courses() {
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:3000/users/courses", {
+        .get("https://course-app-api.onrender.com/users/courses", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("tokenUser"),
           },

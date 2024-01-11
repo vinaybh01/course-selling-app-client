@@ -28,7 +28,7 @@ function AdminRegister() {
       });
       console.log(validatedData);
 
-      const response = await axios.post("http://localhost:3000/admin/signup", {
+      const response = await axios.post("https://course-app-api.onrender.com/admin/signup", {
         username: validatedData.username,
         password: validatedData.password,
       });

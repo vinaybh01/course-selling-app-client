@@ -13,7 +13,7 @@ function CoursePurchase() {
   useEffect(() => {
     try {
       axios
-        .get(`http://localhost:3000/users/course/${courseId}`, {
+        .get(`https://course-app-api.onrender.com/users/course/${courseId}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("tokenUser"),
           },
@@ -32,7 +32,7 @@ function CoursePurchase() {
   const handleBuyClick = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/users/courses/${courses._id}`,
+        `https://course-app-api.onrender.com/users/courses/${courses._id}`,
         null,
         {
           headers: {

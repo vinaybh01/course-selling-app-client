@@ -34,7 +34,7 @@ function AdminAddcourse() {
       });
 
       await axios.post(
-        "http://localhost:3000/admin/courses",
+        "https://course-app-api.onrender.com/admin/courses",
         {
           title: validateData.title,
           description: validateData.description,
