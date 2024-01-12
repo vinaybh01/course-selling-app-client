@@ -1,6 +1,7 @@
 import { Button, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./css/Home.css";
 
 function AppBar() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function AppBar() {
         zIndex: 1,
         height: "60px",
       }}
+      className="mainbar"
     >
       <div style={{ marginLeft: 10 }}>
         <Typography variant={"h5"} style={{ color: "white" }}>
@@ -106,7 +108,7 @@ function AppBar() {
               </Button>
             </div>
           ) : (
-            <div style={{ marginRight: 10 }}>
+            <div className="appBar" style={{ marginRight: 10 }}>
               <Button
                 variant={"text"}
                 style={{ color: "white", fontWeight: "bold" }}

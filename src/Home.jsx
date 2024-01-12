@@ -1,6 +1,7 @@
 import React from "react";
 import Photo from "./assets/20944356.jpg";
 import { useNavigate } from "react-router-dom";
+import "./css/Home.css";
 
 function Home() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Home() {
             }}
           >
             Knowledge awaits! Explore our courses and transform your learning
-            experience.{" "}
+            experience.
           </p>
           <button
             style={{
@@ -39,7 +40,12 @@ function Home() {
             View Courses
           </button>
         </div>
-        <img src={Photo} alt="" style={{ width: "600px", height: "600px" }} />
+        <img
+          className="homeimage"
+          src={Photo}
+          alt=""
+          style={{ width: "600px", height: "600px" }}
+        />
       </div>
     </div>
   );
