@@ -58,53 +58,10 @@ function CoursePurchase() {
     <div>
       {courses ? (
         <div>
-          <div
-            style={{
-              background: "black",
-              color: "white",
-              height: "200px",
-              display: "flex",
-              justifyContent: "left",
-              alignItems: "center",
-              fontSize: "40px",
-              paddingLeft: "200px",
-            }}
-          >
-            {courses.title}
-          </div>
-          <div
-            style={{
-              fontSize: "22px",
-              padding: "80px 100px",
-              marginRight: "400px",
-              opacity: "0.8",
-            }}
-          >
-            {courses.description}
-          </div>
-          <div
-            style={{
-              position: "absolute",
-              top: "150px",
-              right: "100px",
-              width: "380px",
-              height: "300px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <img
-              style={{
-                width: "350px",
-                height: "250px",
-                borderRadius: "10px",
-                objectFit: "cover",
-              }}
-              src={courses.imageLink}
-              alt="CoursePic"
-            />
+          <div className="header">{courses.title}</div>
+          <div className="description">{courses.description}</div>
+          <div className="image">
+            <img src={courses.imageLink} alt="CoursePic" />
             {purchased ? (
               <Button
                 variant={"contained"}
@@ -133,7 +90,7 @@ function CoursePurchase() {
             )}
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <img src={Photo} alt="" />
+            <img className="details" src={Photo} alt="" />
           </div>
         </div>
       ) : (

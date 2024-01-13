@@ -1,10 +1,8 @@
-/* AppBar.css */
-
 .mainbar {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: #333;
+  background-color: #000c66;
 }
 
 .mainbar h5 {
@@ -14,7 +12,8 @@
 
 .appBar {
   display: flex;
-  margin-right: 10px;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .appBar button {
@@ -22,28 +21,22 @@
   font-weight: bold;
 }
 
-.appBar button:not(:last-child) {
-  margin-right: 20px;
-}
-
-/* Hamburger menu button for smaller screens */
 .hamburger-menu {
-  display: none;
+  display: flex;
 }
 
-/* Media query for smaller screens (e.g., mobile) */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 700px) {
+  .hamburger-menu {
+    display: flex;
+  }
+
   .appBar {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: flex-end;
   }
 
   .appBar.open {
-    display: flex;
-  }
-
-  .hamburger-menu {
     display: flex;
   }
 }
