@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingSpinner from "../LoadingSpinner";
+import "../css/AdminCourses.css";
 
 function AdminCourses() {
   const [courses, setCourses] = useState([]);
@@ -26,14 +27,7 @@ function AdminCourses() {
   return (
     <div>
       {courses.length > 0 ? (
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            margin: "30px 100px",
-          }}
-        >
+        <div className="courses">
           {courses.map((course) => {
             return <Course course={course} />;
           })}

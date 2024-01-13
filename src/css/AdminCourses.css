@@ -1,0 +1,18 @@
+.courses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30px 100px;
+}
+
+@media only screen and (max-width: 768px) {
+  .courses {
+    margin: 15px 30px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .courses {
+    margin: 10px 15px;
+  }
+}

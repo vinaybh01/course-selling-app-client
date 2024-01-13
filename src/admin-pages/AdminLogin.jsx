@@ -138,6 +138,7 @@ function AdminLogin() {
               style={{ cursor: "pointer", fontWeight: "bold" }}
               onClick={() => navigate("/admin/register")}
             >
+              {" "}
               REGISTER
             </span>{" "}
             here

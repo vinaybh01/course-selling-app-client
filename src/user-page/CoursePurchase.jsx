@@ -4,6 +4,7 @@ import axios from "axios";
 import { Button, Card, Typography } from "@mui/material";
 import Photo from "../assets/pic2.png";
 import LoadingSpinner from "../LoadingSpinner";
+import "../css/CoursePurchased.css";
 
 function CoursePurchase() {
   let { courseId } = useParams();

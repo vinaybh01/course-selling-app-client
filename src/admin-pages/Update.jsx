@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import "../css/AdminUpdate.css";
 
 function Update() {
   let { courseId } = useParams();
@@ -59,7 +60,7 @@ function Update() {
   };
 
   return (
-    <div>
+    <div className="update">
       <div
         style={{
           display: "flex",
@@ -75,7 +76,7 @@ function Update() {
         >
           Update Course
         </Typography>
-        <div className="div" style={{ width: "550px", border: "" }}>
+        <div className="div" style={{ border: "" }}>
           <form action="">
             <TextField
               label="Title"
