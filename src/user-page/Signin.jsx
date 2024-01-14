@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { z } from "zod";
+import SmallSpinner from "../SmallSpinner";
 
 function Signin() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ function Signin() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [generalError, setGeneralError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
     try {
@@ -27,6 +29,8 @@ function Signin() {
         password,
       });
 
+      setLoading(true);
+
       const response = await axios.post(
         "https://course-app-api.onrender.com/users/login",
 
@@ -37,6 +41,7 @@ function Signin() {
       );
       let data = response.data;
       localStorage.setItem("tokenUser", data.token);
+      setLoading(false);
       navigate("/users/courses");
     } catch (err) {
       if (err instanceof z.ZodError) {
@@ -57,6 +62,8 @@ function Signin() {
         setPasswordError("");
         setGeneralError("");
       }, 2500);
+
+      setLoading(false);
     }
   };
 
@@ -129,7 +136,7 @@ function Signin() {
             onClick={handleSubmit}
           >
             {" "}
-            Signin
+            {loading ? <SmallSpinner /> : "Signin"}
           </Button>
 
           <div className="new" style={{ marginTop: "12px" }}>

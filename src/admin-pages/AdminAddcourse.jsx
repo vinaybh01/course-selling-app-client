@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
+import SmallSpinner from "../SmallSpinner";
 
 function AdminAddcourse() {
   const [title, setTitle] = useState("");
@@ -14,6 +15,7 @@ function AdminAddcourse() {
   const [imageError, setImageError] = useState("");
   const [priceError, setPriceError] = useState("");
   const [generalError, setGeneralError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -33,6 +35,8 @@ function AdminAddcourse() {
         price: parseFloat(price),
       });
 
+      setLoading(true);
+
       await axios.post(
         "https://course-app-api.onrender.com/admin/courses",
         {
@@ -48,6 +52,7 @@ function AdminAddcourse() {
           },
         }
       );
+      setLoading(false);
       alert("Created Course Successfully");
       navigate("/admin/courses");
     } catch (err) {
@@ -81,6 +86,7 @@ function AdminAddcourse() {
         setPriceError("");
         setGeneralError("");
       }, 2500);
+      setLoading(false);
     }
   };
 
@@ -158,7 +164,7 @@ function AdminAddcourse() {
             style={{ backgroundColor: "#000C66", marginTop: "25px" }}
             onClick={handleSubmit}
           >
-            Create
+            {loading ? <SmallSpinner /> : "Create"}
           </Button>
         </form>
       </div>

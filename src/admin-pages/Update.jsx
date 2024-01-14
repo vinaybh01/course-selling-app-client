@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Button, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "../css/AdminUpdate.css";
+import SmallSpinner from "../SmallSpinner";
 
 function Update() {
   let { courseId } = useParams();
@@ -11,6 +12,7 @@ function Update() {
   const [des, setDes] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +35,7 @@ function Update() {
 
   const handleUpdate = async () => {
     try {
+      setLoading(true);
       await axios
         .put(
           `https://course-app-api.onrender.com/admin/course/${courseId}`,
@@ -50,11 +53,13 @@ function Update() {
           }
         )
         .then((res) => {
+          setLoading(false);
           alert("Updated Course Successfully");
           navigate("/admin/courses");
         });
     } catch (error) {
       console.error("Error updating course:", error);
+      setLoading(false);
       alert("Failed to update course. Please try again.");
     }
   };
@@ -119,7 +124,7 @@ function Update() {
               style={{ backgroundColor: "#000C66", marginTop: "25px" }}
               onClick={handleUpdate}
             >
-              Update
+              {loading ? <SmallSpinner /> : "Update"}
             </Button>
           </form>
         </div>

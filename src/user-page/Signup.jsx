@@ -1,11 +1,13 @@
+import React from "react";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
 import TextField from "@mui/material/TextField";
 import { Card, Typography } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../App.css";
 import { z } from "zod";
+import SmallSpinner from "../SmallSpinner";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -13,6 +15,7 @@ function Signup() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [generalError, setGeneralError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -26,18 +29,15 @@ function Signup() {
         username: email,
         password,
       });
-      console.log("ss", validatedData);
 
-      await axios.post(
-        "https://course-app-api.onrender.com/users/signup",
+      setLoading(true);
 
-        {
-          username: validatedData.username,
-          password: validatedData.password,
-        }
-      );
-      // let data = response.data;
-      // localStorage.setItem("tokenUser", data.token);
+      await axios.post("https://course-app-api.onrender.com/users/signup", {
+        username: validatedData.username,
+        password: validatedData.password,
+      });
+
+      setLoading(false);
       navigate("/users/signin");
     } catch (err) {
       if (err instanceof z.ZodError) {
@@ -58,6 +58,8 @@ function Signup() {
         setPasswordError("");
         setGeneralError("");
       }, 2500);
+
+      setLoading(false);
     }
   };
 
@@ -81,9 +83,8 @@ function Signup() {
             </div>
           )}
           <TextField
-            onChange={(evant11) => {
-              let elemt = evant11.target;
-              setEmail(elemt.value);
+            onChange={(event) => {
+              setEmail(event.target.value);
             }}
             fullWidth={true}
             label="Email"
@@ -97,8 +98,8 @@ function Signup() {
             </div>
           )}
           <TextField
-            onChange={(e) => {
-              setPassword(e.target.value);
+            onChange={(event) => {
+              setPassword(event.target.value);
             }}
             fullWidth={true}
             label="Password"
@@ -117,8 +118,9 @@ function Signup() {
             variant="contained"
             style={{ backgroundColor: "#000C66" }}
             onClick={handleSubmit}
+            disabled={loading}
           >
-            Signup
+            {loading ? <SmallSpinner /> : "Signup"}
           </Button>
           <div className="div" style={{ marginTop: "12px" }}>
             Have an account?{" "}

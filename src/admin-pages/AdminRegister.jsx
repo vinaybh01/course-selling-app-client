@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { z } from "zod";
+import SmallSpinner from "../SmallSpinner";
 
 function AdminRegister() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ function AdminRegister() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [generalError, setGeneralError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -28,6 +30,8 @@ function AdminRegister() {
       });
       console.log(validatedData);
 
+      setLoading(true)
+
       const response = await axios.post("https://course-app-api.onrender.com/admin/signup", {
         username: validatedData.username,
         password: validatedData.password,
@@ -35,6 +39,7 @@ function AdminRegister() {
       let data = response.data;
       console.log(data);
       // localStorage.setItem("tokenAdmin", data.token);
+      setLoading(false)
       navigate("/admin/login");
     } catch (err) {
       if (err instanceof z.ZodError) {
@@ -55,6 +60,8 @@ function AdminRegister() {
         setPasswordError("");
         setGeneralError("");
       }, 2500);
+      setLoading(false)
+
     }
   };
 
@@ -114,7 +121,7 @@ function AdminRegister() {
             style={{ backgroundColor: "#000C66" }}
             onClick={handleSubmit}
           >
-            Signup
+            {loading ? <SmallSpinner /> : "Signup"}
           </Button>
           <div className="div" style={{ marginTop: "12px" }}>
             Have an account?{" "}
